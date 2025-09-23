@@ -82,7 +82,7 @@ main, .hero{ padding-top: 84px; }
 .service .info p{ margin:0; color:var(--muted); font-size:0.95rem; }
 
 /* PROYECTOS / VIDEOS */
-.projects{ padding:52px 0 44px; background-image: url('assets/projects-bg.jpg'); background-size: cover; background-position:center; }
+.projects{ padding:52px 0 44px; /*background-image: url('assets/projects-bg.jpg'); background-size: cover; background-position:center;*/ }
 .projects .container{ padding-top:18px; padding-bottom:18px; }
 .projects h2{ text-align:center; color:var(--accent); margin-bottom:8px; }
 .muted{ color:var(--muted); text-align:center; margin-bottom:16px; }
