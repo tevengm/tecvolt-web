@@ -7,7 +7,7 @@
   <meta name="description" content="Reparación, mantenimiento y ensamble de computadores y celulares en Bucaramanga. Servicio técnico profesional con garantía. WhatsApp +57 318 442 4423."/>
   <meta name="theme-color" content="#0aa3e0" />
 
-  <!-- FAVICONS: coloca estos archivos en /assets/ -->
+  <!-- FAVICONS -->
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
@@ -21,19 +21,22 @@
   <meta property="og:locale" content="es_CO" />
   <meta name="twitter:card" content="summary_large_image" />
 
+  <!-- Preload hero image -->
+  <link rel="preload" as="image"
+        href="assets/hero-bg@desktop.jpg"
+        imagesrcset="assets/hero-bg@mobile.jpg 1200w, assets/hero-bg@desktop.jpg 1920w"
+        imagesizes="100vw">
+
   <!-- Fonts / Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  
-  <!-- Preload hero image (desktop y móvil) -->
-  <link rel="preload" as="image" href="assets/hero-bg@desktop.jpg" imagesrcset="assets/hero-bg@mobile.jpg 1200w, assets/hero-bg@desktop.jpg 1920w" imagesizes="100vw">
 
   <style>
     :root{
       --accent:#0aa3e0; --accent-2:#69d6ff; --bg:#07101a; --bg-2:#0b1622; --card:#0f1720;
-      --text:#e6eef6; --muted:#9fb6c6; --ok:#22c55e; --danger:#ef4444; --radius:14px; --shadow: 0 10px 30px rgba(2,6,12,.35);
+      --text:#e6eef6; --muted:#9fb6c6; --radius:14px; --shadow: 0 10px 30px rgba(2,6,12,.35);
       --max:1200px;
     }
     *{box-sizing:border-box}
@@ -50,7 +53,6 @@
     nav a{color:var(--muted);text-decoration:none;font-weight:700;margin-left:18px}
     nav a:hover{color:var(--accent)}
 
-    /* Espacio para header fijo */
     body{padding-top:72px}
 
     /* Mobile menu */
@@ -63,62 +65,34 @@
       nav a{padding:14px 8px;margin:0;border-radius:10px}
     }
 
-/* Hero (1 imagen + tinte configurable) */
-.hero{
-  position:relative;
-  min-height: clamp(520px, 72vh, 780px);
-  display:grid;
-  place-items:center;
-  overflow:hidden;
-  /* imagen responsiva por media queries */
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-}
-/* Móvil: usa la versión mobile */
-@media (max-width: 900px){
-  .hero{
-    background-image: url('assets/hero-bg@mobile.jpg');
-  }
-}
-/* Desktop: usa la grande */
-@media (min-width: 901px){
-  .hero{
-    background-image: url('assets/hero-bg@desktop.jpg');
-  }
-}
+    /* Hero */
+    .hero{
+      position:relative;
+      min-height: clamp(520px, 72vh, 780px);
+      display:grid;place-items:center;
+      background-size:cover;background-position:center;
+    }
+    @media (max-width: 900px){
+      .hero{ background-image: url('assets/hero-bg@mobile.jpg'); }
+    }
+    @media (min-width: 901px){
+      .hero{ background-image: url('assets/hero-bg@desktop.jpg'); }
+    }
+    .hero::after{
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.58), rgba(0,0,0,.38));
+    }
+    .hero__in{ position:relative; z-index:1; text-align:center; padding:52px 0; }
+    .kicker{ display:inline-block; color:#bde9ff; background:rgba(10,163,224,.14);
+      border:1px solid rgba(10,163,224,.25); padding:6px 12px; border-radius:999px;
+      font-weight:700; margin-bottom:14px; }
+    h1{ font-size: clamp(28px, 5vw, 52px); margin:0 0 10px; color:var(--accent) }
+    .hero p{ max-width:780px; margin:0 auto 18px; color:var(--muted); font-size: clamp(15px, 2.2vw, 19px) }
 
-/* Tintes (elige 1 clase: .tint-blue, .tint-cyan o .tint-amber) */
-.hero::after{
-  content:"";
-  position:absolute; inset:0;
-  /* degradado base oscuro + tinte */
-  background:
-    linear-gradient(180deg, rgba(0,0,0,.58), rgba(0,0,0,.38));
-  mix-blend-mode: normal;
-  pointer-events:none;
-}
-.hero.tint-blue::after { background:
-  linear-gradient(180deg, rgba(3,11,20,.62), rgba(3,11,20,.42)),
-  linear-gradient(0deg, rgba(17,76,154,.15), rgba(17,76,154,.15));
-}
-.hero.tint-cyan::after { background:
-  linear-gradient(180deg, rgba(3,11,20,.62), rgba(3,11,20,.42)),
-  linear-gradient(0deg, rgba(10,163,224,.18), rgba(10,163,224,.18));
-}
-.hero.tint-amber::after { background:
-  linear-gradient(180deg, rgba(3,11,20,.62), rgba(3,11,20,.42)),
-  linear-gradient(0deg, rgba(234,179,8,.18), rgba(234,179,8,.18));
-}
-
-.hero__in{ position:relative; z-index:1; text-align:center; padding:52px 0; }
-.kicker{ display:inline-block; color:#bde9ff; background:rgba(10,163,224,.14);
-  border:1px solid rgba(10,163,224,.25); padding:6px 12px; border-radius:999px;
-  font-weight:700; letter-spacing:.3px; margin-bottom:14px; }
-h1{ font-size: clamp(28px, 5vw, 52px); margin:0 0 10px; color:var(--accent) }
-.hero p{ max-width:780px; margin:0 auto 18px; color:var(--muted);
-  font-size: clamp(15px, 2.2vw, 19px) }
-
+    .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;text-decoration:none;font-weight:800;box-shadow:var(--shadow)}
+    .btn--pri{background:var(--accent);color:#032532}
+    .btn--gh{background:transparent;border:1px solid rgba(255,255,255,.08);color:var(--muted)}
 
     /* Sections */
     section{scroll-margin-top:88px}
@@ -141,7 +115,7 @@ h1{ font-size: clamp(28px, 5vw, 52px); margin:0 0 10px; color:var(--accent) }
     .video{padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,.06);background:rgba(2,6,12,.6)}
     .video iframe{width:100%;height:220px;border:0;border-radius:10px}
 
-    /* Contacto (sin imágenes de fondo) */
+    /* Contacto */
     .contact .box{background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:18px}
     .socials{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
     .social{display:inline-flex;gap:8px;align-items:center;padding:10px 14px;border-radius:10px;color:#fff;text-decoration:none;font-weight:800}
@@ -156,11 +130,6 @@ h1{ font-size: clamp(28px, 5vw, 52px); margin:0 0 10px; color:var(--accent) }
 
     /* Footer */
     footer{padding:22px 0;text-align:center;color:var(--muted);background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.65))}
-
-    /* A11y + motion */
-    :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
-    @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto !important;animation:none !important;transition:none !important}}
-    html{scroll-behavior:smooth}
   </style>
 </head>
 
@@ -186,21 +155,20 @@ h1{ font-size: clamp(28px, 5vw, 52px); margin:0 0 10px; color:var(--accent) }
     </div>
   </header>
 
-<!-- Hero (1 imagen + tinte cyan por defecto) -->
-<section class="hero tint-cyan" id="hero" role="region" aria-labelledby="hero-title">
-  <div class="hero__in container">
-    <span class="kicker">Servicio técnico con garantía</span>
-    <h1 id="hero-title">Soluciones tecnológicas confiables</h1>
-    <p>Reparación, mantenimiento y ensamble de computadores y celulares. Instalación de cámaras de seguridad y asesoría experta en el área metropolitana de Bucaramanga.</p>
-    <div class="cta">
-      <a class="btn btn--pri" href="https://wa.me/573184424423" target="_blank" rel="noopener noreferrer">
-        <i class="fa-brands fa-whatsapp"></i> Escríbenos por WhatsApp
-      </a>
-      <a class="btn btn--gh" href="#servicios">Ver servicios</a>
+  <!-- Hero -->
+  <section class="hero" id="hero" role="region" aria-labelledby="hero-title">
+    <div class="hero__in container">
+      <span class="kicker">Servicio técnico con garantía</span>
+      <h1 id="hero-title">Soluciones tecnológicas confiables</h1>
+      <p>Reparación, mantenimiento y ensamble de computadores y celulares. Instalación de cámaras de seguridad y asesoría experta en el área metropolitana de Bucaramanga.</p>
+      <div class="cta">
+        <a class="btn btn--pri" href="https://wa.me/573184424423" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Escríbenos por WhatsApp</a>
+        <a class="btn btn--gh" href="#servicios">Ver servicios</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <main class="container" role="main">
     <!-- Servicios -->
     <section id="servicios" class="section" aria-labelledby="servicios-title">
       <h2 class="section__title" id="servicios-title">Nuestros servicios</h2>
@@ -221,14 +189,14 @@ h1{ font-size: clamp(28px, 5vw, 52px); margin:0 0 10px; color:var(--accent) }
       </div>
     </section>
 
-    <!-- Proyectos / Videos -->
+    <!-- Proyectos -->
     <section id="proyectos" class="section" aria-labelledby="proyectos-title">
       <h2 class="section__title" id="proyectos-title">Algunos trabajos</h2>
       <p class="muted" style="text-align:center">Tutoriales y reparaciones realizadas — haz clic para ver en YouTube.</p>
       <div class="grid grid--videos">
-        <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/tjUX44buhg0" title="Trabajo 1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-        <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/WLTW5eOaRQA" title="Trabajo 2" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-        <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/DsstWj-L3Mc" title="Trabajo 3" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/tjUX44buhg0" title="Trabajo 1" allowfullscreen></iframe></div>
+        <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/WLTW5eOaRQA" title="Trabajo 2" allowfullscreen></iframe></div>
+        <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/DsstWj-L3Mc" title="Trabajo 3" allowfullscreen></iframe></div>
       </div>
     </section>
 
@@ -239,7 +207,7 @@ h1{ font-size: clamp(28px, 5vw, 52px); margin:0 0 10px; color:var(--accent) }
         <details class="card"><summary><strong>¿Ofrecen garantía?</strong></summary><p>¡Sí! Sobre mano de obra y repuestos (según tipo de servicio). Siempre te indicamos el alcance por escrito.</p></details>
         <details class="card"><summary><strong>¿Retiran a domicilio?</strong></summary><p>En el área metropolitana con cita previa. También puedes llevar tu equipo al taller.</p></details>
         <details class="card"><summary><strong>¿Cuánto tarda un diagnóstico?</strong></summary><p>En la mayoría de casos, entre 24 y 48 horas. Si es urgente, consúltanos por WhatsApp.</p></details>
-        <details class="card"><summary><strong>¿Métodos de pago?</strong></summary><p>Efectivo, transferencias (Nequi/Daviplata/Bancolombia/Davivienda).</p></details>
+        <details class="card"><summary><strong>¿Métodos de pago?</strong></summary><p>Aceptamos transferencias a cuentas de ahorros (desde cualquier banco), <strong>Nequi</strong> y <strong>Davivienda</strong>. Los datos se comparten al confirmar el servicio.</p></details>
       </div>
     </section>
 
@@ -252,7 +220,7 @@ h1{ font-size: clamp(28px, 5vw, 52px); margin:0 0 10px; color:var(--accent) }
           <div class="socials">
             <a class="social wh" href="https://wa.me/573184424423" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
             <a class="social ig" href="https://instagram.com/tecvoltcolombia" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i> Instagram</a>
-            <a class="social facebook" href="https://www.facebook.com/TecVoltColombia/" rel="noopener"><i class="fa-brands fa-facebook"></i> Facebook</a>
+			<a class="social fb" href="https://facebook.com/TecVoltColombia" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i> Facebook</a>
             <a class="social yt" href="https://youtube.com/@TecVoltColombia" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i> YouTube</a>
           </div>
         </div>
@@ -279,17 +247,6 @@ h1{ font-size: clamp(28px, 5vw, 52px); margin:0 0 10px; color:var(--accent) }
     });
   </script>
 
-  <!-- Script: hero slider (2 fondos, 5s) -->
-  <script>
-    const slides = document.querySelectorAll('.hero-slide');
-    let current = 0;
-    setInterval(() => {
-      slides[current].classList.remove('active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('active');
-    }, 5000);
-  </script>
-
   <!-- JSON-LD: LocalBusiness para SEO -->
   <script type="application/ld+json">
   {
@@ -309,7 +266,6 @@ h1{ font-size: clamp(28px, 5vw, 52px); margin:0 0 10px; color:var(--accent) }
     "areaServed": ["Bucaramanga","Floridablanca","Girón","Piedecuesta"],
     "sameAs": [
       "https://instagram.com/tecvoltcolombia",
-      "https://facebook.com/TecVoltColombia",
       "https://youtube.com/@TecVoltColombia"
     ],
     "priceRange": "$$"
