@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TecVolt · Reparación y Ensamble | Bucaramanga</title>
+  <meta name="description" content="Reparación, mantenimiento y ensamble de computadores y celulares en Bucaramanga. Servicio técnico profesional con garantía. WhatsApp +57 318 442 4423."/>
+  <meta name="theme-color" content="#0aa3e0" />
+
+  <!-- FAVICONS: coloca estos archivos en /assets/ -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+
+  <!-- Canonical + Social -->
+  <link rel="canonical" href="https://tecvolt.net/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="TecVolt · Reparación y Ensamble" />
+  <meta property="og:description" content="Soluciones tecnológicas confiables: PCs, celulares y cámaras. Atención profesional con garantía." />
+  <meta property="og:image" content="https://tecvolt.net/assets/og-cover.jpg" />
+  <meta property="og:locale" content="es_CO" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Fonts / Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    :root{
+      --accent:#0aa3e0; --accent-2:#69d6ff; --bg:#07101a; --bg-2:#0b1622; --card:#0f1720;
+      --text:#e6eef6; --muted:#9fb6c6; --ok:#22c55e; --danger:#ef4444; --radius:14px; --shadow: 0 10px 30px rgba(2,6,12,.35);
+      --max:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+    /* Header */
+    .hdr{position:fixed;top:0;left:0;right:0;z-index:1000;backdrop-filter:saturate(140%) blur(8px);background:linear-gradient(180deg, rgba(3,10,18,.85), rgba(3,10,18,.55));border-bottom:1px solid rgba(255,255,255,.05)}
+    .hdr__in{display:flex;align-items:center;justify-content:space-between;height:72px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .brand img{height:48px;width:auto}
+    .brand span{font-weight:800;letter-spacing:.2px}
+    nav a{color:var(--muted);text-decoration:none;font-weight:700;margin-left:18px}
+    nav a:hover{color:var(--accent)}
+
+    /* Espacio para header fijo */
+    body{padding-top:72px}
+
+    /* Mobile menu */
+    .burger{display:none;background:none;border:0;color:var(--text);font-size:26px}
+    @media (max-width:860px){
+      .burger{display:inline-flex}
+      nav{position:fixed;inset:72px 0 auto 0;background:rgba(7,16,26,.98);border-top:1px solid rgba(255,255,255,.06);display:none}
+      nav.open{display:block}
+      nav .menu{display:flex;flex-direction:column;padding:14px}
+      nav a{padding:14px 8px;margin:0;border-radius:10px}
+    }
+
+    /* Hero con slider de fondo (2 imágenes) */
+    .hero{position:relative;min-height: clamp(520px, 72vh, 780px);display:grid;place-items:center;overflow:hidden}
+    .hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1s ease-in-out}
+    .hero-slide.active{opacity:1}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.35))}
+    .hero__in{position:relative;z-index:1;text-align:center;padding:52px 0}
+    .kicker{display:inline-block;color:#bde9ff;background:rgba(10,163,224,.14);border:1px solid rgba(10,163,224,.25);padding:6px 12px;border-radius:999px;font-weight:700;letter-spacing:.3px;margin-bottom:14px}
+    h1{font-size: clamp(28px, 5vw, 52px);margin:0 0 10px;color:var(--accent)}
+    .hero p{max-width:780px;margin:0 auto 18px;color:var(--muted);font-size: clamp(15px, 2.2vw, 19px)}
+    .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;text-decoration:none;font-weight:800;box-shadow:var(--shadow)}
+    .btn--pri{background:var(--accent);color:#032532}
+    .btn--gh{background:transparent;border:1px solid rgba(255,255,255,.08);color:var(--muted)}
+
+    /* Sections */
+    section{scroll-margin-top:88px}
+    .section{padding:56px 0}
+    .section__title{color:var(--accent);text-align:center;margin:0 0 10px;font-size:clamp(22px,3.2vw,28px)}
+    .muted{color:var(--muted)}
+
+    /* Services */
+    .grid{display:grid;gap:14px}
+    .grid--services{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:14px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:18px;transition:transform .12s}
+    .card:hover{transform:translateY(-6px)}
+    .svc{display:flex;gap:14px;align-items:flex-start}
+    .svc .ico{min-width:52px;min-height:52px;display:grid;place-items:center;background:rgba(255,255,255,.04);border-radius:12px;color:var(--accent);font-size:20px}
+    .svc h3{margin:0 0 6px;color:#e8fbff;font-size:1rem}
+    .svc p{margin:0;color:var(--muted);font-size:.95rem}
+
+    /* Videos */
+    .grid--videos{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));max-width:1100px;margin:0 auto}
+    .video{padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,.06);background:rgba(2,6,12,.6)}
+    .video iframe{width:100%;height:220px;border:0;border-radius:10px}
+
+    /* Contacto (sin imágenes de fondo) */
+    .contact .box{background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:18px}
+    .socials{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+    .social{display:inline-flex;gap:8px;align-items:center;padding:10px 14px;border-radius:10px;color:#fff;text-decoration:none;font-weight:800}
+    .wh{background:#25d366;color:#062018}
+    .ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
+    .fb{background:#1877f2}
+    .yt{background:#ff0000}
+
+    /* WhatsApp flotante */
+    .wa-float{position:fixed;right:18px;bottom:18px;width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#25d366;color:#062018;font-size:26px;text-decoration:none;box-shadow:var(--shadow);z-index:120;transition:transform .12s}
+    .wa-float:hover{transform:translateY(-6px)}
+
+    /* Footer */
+    footer{padding:22px 0;text-align:center;color:var(--muted);background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.65))}
+
+    /* A11y + motion */
+    :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+    @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto !important;animation:none !important;transition:none !important}}
+    html{scroll-behavior:smooth}
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="hdr" role="banner">
+    <div class="container hdr__in">
+      <a class="brand" href="#hero" aria-label="TecVolt inicio">
+        <img src="assets/logo.png" alt="TecVolt" />
+        <span>TecVolt</span>
+      </a>
+      <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainnav">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <nav id="mainnav" role="navigation" aria-label="Menú principal">
+        <div class="menu">
+          <a href="#servicios">Servicios</a>
+          <a href="#proyectos">Trabajos</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero con slider de fondo (dos imágenes) -->
+  <section class="hero" id="hero" role="region" aria-labelledby="hero-title">
+    <div class="hero-slide active" style="background-image:url('assets/hero-bg1.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('assets/hero-bg2.jpg')"></div>
+    <div class="hero__in container">
+      <span class="kicker">Servicio técnico con garantía</span>
+      <h1 id="hero-title">Soluciones tecnológicas confiables</h1>
+      <p>Reparación, mantenimiento y ensamble de computadores y celulares. Instalación de cámaras de seguridad y asesoría experta en el área metropolitana de Bucaramanga.</p>
+      <div class="cta">
+        <a class="btn btn--pri" href="https://wa.me/573184424423" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Escríbenos por WhatsApp</a>
+        <a class="btn btn--gh" href="#servicios">Ver servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container" role="main">
+    <!-- Servicios -->
+    <section id="servicios" class="section" aria-labelledby="servicios-title">
+      <h2 class="section__title" id="servicios-title">Nuestros servicios</h2>
+      <p class="muted" style="text-align:center">Atención en taller y a domicilio con cita previa.</p>
+      <div class="grid grid--services">
+        <article class="card svc"><div class="ico"><i class="fa-solid fa-computer"></i></div><div><h3>Venta de Computadores</h3><p>Nuevos y usados verificados; asesoría según presupuesto y uso.</p></div></article>
+        <article class="card svc"><div class="ico"><i class="fa-solid fa-screwdriver-wrench"></i></div><div><h3>Ensamblaje Personalizado</h3><p>PCs a medida para gaming, edición o trabajo profesional.</p></div></article>
+        <article class="card svc"><div class="ico"><i class="fa-solid fa-bolt"></i></div><div><h3>Mantenimiento Preventivo</h3><p>Limpieza interna, pasta térmica y optimización de rendimiento.</p></div></article>
+        <article class="card svc"><div class="ico"><i class="fa-solid fa-microchip"></i></div><div><h3>Actualización de Hardware</h3><p>SSD, RAM, GPU y más para acelerar tu equipo.</p></div></article>
+        <article class="card svc"><div class="ico"><i class="fa-solid fa-cogs"></i></div><div><h3>Reparación de Hardware</h3><p>Diagnóstico y reemplazo de componentes con pruebas avanzadas.</p></div></article>
+        <article class="card svc"><div class="ico"><i class="fa-solid fa-stethoscope"></i></div><div><h3>Diagnóstico de Problemas</h3><p>Pruebas completas para fallos de hardware y software.</p></div></article>
+        <article class="card svc"><div class="ico"><i class="fa-solid fa-download"></i></div><div><h3>Instalación de Software</h3><p>Sistemas operativos, utilidades, antivirus y configuración.</p></div></article>
+        <article class="card svc"><div class="ico"><i class="fa-solid fa-headset"></i></div><div><h3>Asesoría Técnica</h3><p>Optimiza tu inversión y prolonga la vida útil de tus equipos.</p></div></article>
+        <article class="card svc"><div class="ico"><i class="fa-solid fa-video"></i></div><div><h3>Cámaras de Seguridad</h3><p>Instalación y configuración de DVR/NVR y cámaras IP.</p></div></article>
+        <article class="card svc"><div class="ico"><i class="fa-solid fa-truck"></i></div><div><h3>Servicio a Domicilio</h3><p>Reparaciones in-situ (zonas cercanas) con cita previa.</p></div></article>
+        <article class="card svc"><div class="ico"><i class="fa-solid fa-battery-full"></i></div><div><h3>Reemplazo de Baterías</h3><p>Portátiles y celulares con repuestos de calidad.</p></div></article>
+        <article class="card svc"><div class="ico"><i class="fa-solid fa-mobile-screen-button"></i></div><div><h3>Cambio de Pantalla</h3><p>Reemplazo y calibración de pantallas para móviles y tablets.</p></div></article>
+      </div>
+    </section>
+
+    <!-- Proyectos / Videos -->
+    <section id="proyectos" class="section" aria-labelledby="proyectos-title">
+      <h2 class="section__title" id="proyectos-title">Algunos trabajos</h2>
+      <p class="muted" style="text-align:center">Tutoriales y reparaciones realizadas — haz clic para ver en YouTube.</p>
+      <div class="grid grid--videos">
+        <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/tjUX44buhg0" title="Trabajo 1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/WLTW5eOaRQA" title="Trabajo 2" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/DsstWj-L3Mc" title="Trabajo 3" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section" aria-labelledby="faq-title">
+      <h2 class="section__title" id="faq-title">Preguntas frecuentes</h2>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;max-width:960px;margin:14px auto 0">
+        <details class="card"><summary><strong>¿Ofrecen garantía?</strong></summary><p>¡Sí! Sobre mano de obra y repuestos (según tipo de servicio). Siempre te indicamos el alcance por escrito.</p></details>
+        <details class="card"><summary><strong>¿Retiran a domicilio?</strong></summary><p>En el área metropolitana con cita previa. También puedes llevar tu equipo al taller.</p></details>
+        <details class="card"><summary><strong>¿Cuánto tarda un diagnóstico?</strong></summary><p>En la mayoría de casos, entre 24 y 48 horas. Si es urgente, consúltanos por WhatsApp.</p></details>
+        <details class="card"><summary><strong>¿Métodos de pago?</strong></summary><p>Efectivo, transferencias (Nequi/Bancolombia), y datáfono según disponibilidad.</p></details>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="section" aria-labelledby="contacto-title">
+      <div class="container">
+        <h2 class="section__title" id="contacto-title">Contacto</h2>
+        <div class="box" style="text-align:center">
+          <p>Tel: <strong>+57 318 442 4423</strong> · Email: <a href="mailto:tecvoltcolombia@gmail.com">tecvoltcolombia@gmail.com</a></p>
+          <div class="socials">
+            <a class="social wh" href="https://wa.me/573184424423" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            <a class="social ig" href="https://instagram.com/tecvoltcolombia" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i> Instagram</a>
+            <a class="social fb" href="https://facebook.com/TecVoltColombia" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i> Facebook</a>
+            <a class="social yt" href="https://youtube.com/@TecVoltColombia" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i> YouTube</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- WhatsApp Floating Button -->
+  <a class="wa-float" href="https://wa.me/573184424423" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <p>© 2025 TecVolt · Reparación y mantenimiento de computadores y celulares · Área metropolitana de Bucaramanga</p>
+    </div>
+  </footer>
+
+  <!-- Script: menú móvil -->
+  <script>
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('nav');
+    burger?.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  </script>
+
+  <!-- Script: hero slider (2 fondos, 5s) -->
+  <script>
+    const slides = document.querySelectorAll('.hero-slide');
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 5000);
+  </script>
+
+  <!-- JSON-LD: LocalBusiness para SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "TecVolt",
+    "image": "https://tecvolt.net/assets/og-cover.jpg",
+    "telephone": "+57 318 442 4423",
+    "email": "tecvoltcolombia@gmail.com",
+    "url": "https://tecvolt.net/",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bucaramanga",
+      "addressRegion": "Santander",
+      "addressCountry": "CO"
+    },
+    "areaServed": ["Bucaramanga","Floridablanca","Girón","Piedecuesta"],
+    "sameAs": [
+      "https://instagram.com/tecvoltcolombia",
+      "https://facebook.com/TecVoltColombia",
+      "https://youtube.com/@TecVoltColombia"
+    ],
+    "priceRange": "$$"
+  }
+  </script>
+</body>
+</html>
